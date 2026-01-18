@@ -1,0 +1,179 @@
+   [1]<- Previous [2]Contents
+
+Icon News
+
+XTide 2.15.6 (libxtide.so.1.0.6) (2025-06-16)
+
+   XTide 2.15.6 fixed a bug that caused garbled text in graphs and
+   improved the behavior of text selection and editing in control panel
+   text fields when XTide is linked with Xaw3dXft.  Get it from
+   [3]https://flaterco.com/xtide/files.html and see the [4]changelog for
+   details.
+
+Data refresh 2024-12-29
+
+   The data refresh available from
+   [5]https://flaterco.com/xtide/files.html#harmonicsfiles includes
+   routine updates and corrections.  A corresponding update of the
+   harmonic constants management package is available from
+   [6]https://flaterco.com/xtide/files.html#experts.
+
+tcd-utils 2024-02-22
+
+   This legacy package for converting Tide Constituent Database (TCD)
+   files to and from other formats has been refreshed to fix a FTB with
+   GCC 14.  Get the latest from
+   [7]https://flaterco.com/xtide/files.html#extras.
+
+Mailing list migration 2024-02-04
+
+   There is an announce-only mailing list to which I send notices of each
+   update to XTide or the harmonics data.  Effective 2024-02-04, it has
+   moved to Google Groups.  If you want to remain on the list, please
+   subscribe to the new one.
+
+   To subscribe any address, send an email to
+   [8]xtide-announce+subscribe@googlegroups.com and reply to the
+   confirmation email.  Those with Google accounts can instead sign in and
+   join directly at [9]https://groups.google.com/d/forum/xtide-announce.
+   The archives can be viewed by anyone at
+   [10]https://groups.google.com/d/forum/xtide-announce.
+
+   The archives of the old mailing list will remain at
+   [11]https://pairlist10.pair.net/pipermail/xtide-announce/ until they
+   are deleted.
+
+ftp is dead
+
+   The archive is at [12]https://flaterco.com/files/xtide/.  Old links
+   pointing to ftp://ftp.flaterco.com/xtide/... should be redirected to
+   https://flaterco.com/files/xtide/....
+
+End of maintenance for non-free data
+
+   For [13]various reasons, I have ended maintenance of the non-free data
+   set.  Anyone interested in generating new harmonic constants from
+   published data can find information and a list of data sources
+   [14]here.
+
+To do list
+
+   Fix Dstr.
+
+   XTide
+
+   Aging has placed XTide in the undesirable category of legacy X apps
+   that require ugly scaling by the desktop to prevent things from
+   becoming tiny on a 4k display.  A significant renovation of the GUI is
+   needed:
+     * Migrate from Xaw/Xaw3d/Xaw3dXft to (maybe) FLTK, acquiring native
+       Wayland support as a bonus.
+     * Make all displayed windows scalable.
+
+   Non-GUI items:
+     * Modernize LaTeX format output (XeLaTeX, better font, maybe auto
+       page sizing).
+     * Support [15]QGIS integration as a substitute for the builtin
+       location chooser.
+     * Support m/s as a unit for currents.  NOAA default is now cm/s.
+     * Implement [16]RFC 4180 CSV format with quoting instead of the
+       stupid vertical bar substitution for commas.
+     * If libxtide is changed, consider merging some accommodations from
+       XTideMac.
+          + Opting out of LibPNG, RGBGraph, Settings, and codeset support.
+          + Compiler was opinionated about character encoding and int
+            types.
+          + Configure for dirent.h, syslog.h.
+     * Purge antique portability workarounds.
+     * Make xttpd use https.
+     * Support lookup by station ID instead of only name.
+     * The XML parser should be bundled under the libxtide namespace but
+       isn't.
+
+   Major things to do in XTide 3 if life turns out not to be too short
+   after all:
+     * Migrate to a better language or at least a newer version of C++.
+     * Refactor libxtide to remove unnecessary complexity.  Remove
+       hydraulic current support.  Standardize units used internally.
+     * Support minor axes for currents; yield speed and direction at any
+       time; plot as a cylinder.
+     * Find a way to put an end to the infinite number of customization
+       settings for graph mode, such as by dumping ALL of the data,
+       metadata, and events to a single-file format that an external
+       graphing app will read.
+     * Renovate programming practices again (exceptions, checked and const
+       operations, strings).
+     * On exceptions:  get the application-specific error messages OUT of
+       libxtide.
+     * Move from Latin-1 to UTF-8 (requires libtcd revision).
+     * Harmonize the globe location chooser with the way that Google Earth
+       operates.  Migrate to OpenGL, Vulkan, whatever.
+
+   tideEditor
+     * Fix Qt deprecation warnings.
+     * Make it usable on low-resolution displays.
+     * Synchronize location chooser scaling with XTide.
+
+   harmbase2
+
+   All the cheap and nasty reverse geocoding for the purpose of improving
+   station descriptions is stupid and should be punted to [17]QGIS.
+
+   harmgen
+
+   It should be possible to [18]link directly with liboctave to avoid the
+   very inefficient conversion of input data from binary to text and back
+   again that currently is done.  However, this would be fixing something
+   that is not broken, and is neither important nor urgent.
+
+   libtcd
+
+   Purge antique portability workarounds from configure.ac.  Always just
+   include stdint not inttypes.
+
+   In signed_bit_unpack, extend_mask << numbits uses undefined behavior.
+
+   In the documentation section on inference, cite NOAA SP NOS CO-OPS 3
+   Sec. 4.2.3 explaining how bogus it is.
+
+   Things to do in the next major revision, if there ever is one:
+     * Purge COMPAT114 code and documentation.
+     * UTF-8.
+     * Move station ID to header.
+     * Add header field to flag tides versus currents.
+     * Add depth field for currents.
+     * Support minor axes for currents.
+     * Get rid of internal state; fix inability to have more than one
+       database open.
+     * Remove gratuitous complexity in the encoding of speeds, equilibrium
+       arguments, and node factors; make speeds 32-bit unsigned with no
+       offset.
+     * Possibly permit node factors to be specified for intervals shorter
+       than 1 year and/or support apps that use libcongen to generate the
+       node factors themselves.
+     __________________________________________________________________
+
+   [19]<- Previous [20]Contents
+
+References
+
+   1. https://flaterco.com/xtide/changelog.html
+   2. https://flaterco.com/xtide/xtide.html#contents
+   3. https://flaterco.com/xtide/files.html
+   4. https://flaterco.com/xtide/changelog.html
+   5. https://flaterco.com/xtide/files.html#harmonicsfiles
+   6. https://flaterco.com/xtide/files.html#experts
+   7. https://flaterco.com/xtide/files.html#extras
+   8. mailto:xtide-announce+subscribe@googlegroups.com
+   9. https://groups.google.com/d/forum/xtide-announce
+  10. https://groups.google.com/d/forum/xtide-announce
+  11. https://pairlist10.pair.net/pipermail/xtide-announce/
+  12. https://flaterco.com/files/xtide/
+  13. https://flaterco.com/xtide/faq.html#renaissance
+  14. https://flaterco.com/xtide/harmonics.html#harmgen
+  15. https://qgis.org/en/site/
+  16. https://datatracker.ietf.org/doc/html/rfc4180
+  17. https://qgis.org/en/site/
+  18. https://www.gnu.org/software/octave/doc/interpreter/Standalone-Programs.html
+  19. https://flaterco.com/xtide/changelog.html
+  20. https://flaterco.com/xtide/xtide.html#contents
