@@ -1,0 +1,3 @@
+configure --prefix=/@unixroot/usr/local 'LDFLAGS=-Zomf -Zmap -Zhigh-mem' LIBS=-lcx
+make
+make install
