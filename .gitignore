@@ -5,6 +5,8 @@
 *.la
 *.lo
 *.bak
+*.map
+*.log
 *~
 .libs/
 .deps/
