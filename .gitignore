@@ -2,5 +2,9 @@
 *.o
 *.a
 *.exe
+*.la
+*.lo
 *.bak
 *~
+.libs/
+.deps/
