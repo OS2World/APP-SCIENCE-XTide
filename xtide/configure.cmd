@@ -1,1 +1,1 @@
-sh configure --enable-static --disable-shared --prefix=/@unixroot/usr/local 'LDFLAGS=-Zomf -Zmap -Zhigh-mem -L/@unixroot/usr/local/lib' 'LIBS=-lcx' 2>&1 | tee configure.log
+sh configure --enable-semicolon-pathsep --without-x --enable-static --disable-shared --prefix=/@unixroot/usr/local 'LDFLAGS=-Zomf -Zmap -Zhigh-mem -L/@unixroot/usr/local/lib' 'LIBS=-lcx' 2>&1 | tee configure.log

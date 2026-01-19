@@ -132,7 +132,7 @@
 /* #undef UseLocalFiles */
 
 /* Define to use semicolon as HFILE_PATH separator */
-/* #undef UseSemicolonPathsep */
+#define UseSemicolonPathsep 1
 
 /* Version number of package */
 #define VERSION "2.15.6"
